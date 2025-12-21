@@ -1,21 +1,37 @@
-MIT License
+Non-Commercial License for Papa Louie's Gameria Loader
 
-Copyright (c) 2025 ac24588
+Copyright (c) 2025 ac245886
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+of this software and associated documentation files (the "Software"), to use,
+copy, modify, merge, and distribute the Software **strictly for non-commercial purposes only**.  
+This means you may not sell, license, or otherwise profit financially from the Software in any way.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+You are permitted to:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+1. **Use** the Software for personal, educational, or non-commercial projects.
+2. **Modify** the Software to suit your needs for personal or educational purposes.
+3. **Share** or distribute the Software with others for free, provided this license and copyright notice are included.
+
+You are **not permitted** to:
+
+1. Sell, sublicense, or otherwise monetize the Software.
+2. Remove or alter the copyright notice or license.
+3. Claim ownership of the original Software.
+
+Redistribution rules:
+
+- You may redistribute the Software in source or compiled form, **only under this same license**.
+- You may not include the Software in a commercial product or service.
+- All copies must include this full license and attribution to the original author (Alexander Correa).
+
+Disclaimer:
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.  
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Special Note:
+
+- This license only applies to the HTML/JS loader created by the author.  
+- The SWF files included or referenced in this project are **copyrighted by their original creators** and are not licensed under this document. Users must respect the original copyrights of those files.
+- This license is designed to ensure the Software remains freely accessible for non-commercial use while preventing resale or profit.
