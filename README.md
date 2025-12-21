@@ -1,43 +1,71 @@
 # Papa Louie's Gameria Library (Ruffle Web Loader)
 
-This repository contains a simple HTML/JS page that uses **Ruffle** to load and play
-SWF files. The SWF files included or referenced here were **obtained from the public
-Archive.org archive**, where they were made publicly accessible for preservation and
-historical purposes.
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Ruffle](https://img.shields.io/badge/Powered%20by-Ruffle-blue)](https://ruffle.rs/)
 
-## You can access the web loader for the games here: [Papa Louie's Gameria Loader](https://ac245886.github.io/bladlasdada/gaems.html)
+A simple **HTML/JS loader** for Flash SWF games using [Ruffle](https://ruffle.rs/).  
+This repository lets you play classic Flash games directly in modern browsers.
+
+> The SWF files referenced here are sourced from [Archive.org](https://archive.org/) for historical and preservation purposes.
+
+---
+
+## 🌐 Access the Web Loader
+
+Play the games online using this link:  
+[**Papa Louie's Gameria Loader**](https://ac245886.github.io/bladlasdada/gaems.html)
+
+You can also download the `gaems.html` file to run the loader offline, but an internet connection is still required to load the SWF files; otherwise, the page will not function.
+
+---
+
+## 🎮 Why This Project Exists
+
+Modern browsers no longer support Flash, making it increasingly difficult to play classic SWF games.  
+
+This **all-in-one Gameria loader** was created to:
+
+- Provide a **simple, ad-free HTML solution** for playing games
+- Preserve historically significant Flash content
+- Make it easier to test and use [Ruffle](https://ruffle.rs/) with old SWFs
+
+In short, this project offers a **safer, easier, and centralized way** to enjoy these classic games.
+
+---
 
 ## ⚠️ Disclaimer
 
-I do **not** own the rights to the original SWF games or their trademarks.
-All copyrights, trademarks, and intellectual property remain with their
-respective owners.
+- I **do not own** the original SWF games or any related trademarks.  
+- All copyrights, trademarks, and intellectual property remain with their respective owners.  
+- SWF files are **sourced from publicly accessible Archive.org archives**, e.g.:  
+  [`https://archive.org/search?query=creator%3A"Flipline+Studios"`](https://archive.org/search?query=creator%3A%22Flipline+Studios%22)
 
-The SWF files included in this repository were sourced from:
-
-- **Archive.org**, a public digital preservation platform  
-  (e.g. `https://archive.org/search?query=creator%3A"Flipline+Studios"`)
-
-These files were already publicly accessible and available for anyone to
-view or download. My intention in mirroring them here is for:
+### Purpose of This Repository
 
 - Software preservation  
 - Educational purposes  
-- Allowing Ruffle compatibility testing  
-- Making it easier to run historically significant Flash content
+- Ruffle compatibility testing  
+- Easier access to historically important Flash content
 
-If the rightful owners of any included SWF file request its removal, I will
-promptly comply.
+> If any rightful owner requests removal of their SWF file, it will be promptly removed.
+
+---
 
 ## 📜 Licensing Notes
 
-- I am **not claiming ownership** of the SWF files.
-- Their original licenses may not permit redistribution, even if publicly
-  hosted on Archive.org.
-- The HTML/JS code in this repository (not the SWF files) is my own and
-  may be used freely.
+- **SWF files**: I am not claiming ownership. Their original licenses may not permit redistribution.  
+- **HTML/JS loader code**: Created by me and may be used freely.
+
+---
 
 ## 🙏 Respect the Developers
 
-These Flash games represent the work of their original creators.  
-Please support the developers whenever possible.
+These games are the work of their original creators. Please **support the developers** whenever possible.
+
+---
+
+## 💡 Resources
+
+- [Ruffle Flash Emulator](https://ruffle.rs/)  
+- [Archive.org](https://archive.org/)  
+- [Flipline Studios](https://www.flipline.com/)
