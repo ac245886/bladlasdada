@@ -14,7 +14,7 @@ respective owners.
 The SWF files included in this repository were sourced from:
 
 - **Archive.org**, a public digital preservation platform  
-  (e.g. `https://archive.org/details/...`)
+  (e.g. `[https://archive.org/details/...](https://archive.org/search?query=creator%3A"Flipline+Studios")`)
 
 These files were already publicly accessible and available for anyone to
 view or download. My intention in mirroring them here is for:
