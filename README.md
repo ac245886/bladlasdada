@@ -1,4 +1,4 @@
-# Flash Game Archive (Ruffle Web Loader)
+# Papa Louie's Gameria Library (Ruffle Web Loader)
 
 This repository contains a simple HTML/JS page that uses **Ruffle** to load and play
 SWF files. The SWF files included or referenced here were **obtained from the public
