@@ -5,6 +5,8 @@ SWF files. The SWF files included or referenced here were **obtained from the pu
 Archive.org archive**, where they were made publicly accessible for preservation and
 historical purposes.
 
+## You can access the web loader for the games here: [Papa Louie's Gameria Loader](https://ac245886.github.io/bladlasdada/index.html)
+
 ## ⚠️ Disclaimer
 
 I do **not** own the rights to the original SWF games or their trademarks.
