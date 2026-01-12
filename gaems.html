@@ -46,7 +46,7 @@ body {
 }
 .prompt span { color: #9cdcfe; }
 
-select, button {
+select, button, input[type="file"] {
     background: #000;
     color: #e5e5e5;
     border: 1px solid #777;
@@ -54,8 +54,13 @@ select, button {
     font-size: 14px;
     padding: 3px;
 }
-button { padding: 3px 10px; cursor: pointer; }
-button:hover { background: #111; }
+button {
+    padding: 3px 10px;
+    cursor: pointer;
+}
+button:hover {
+    background: #111;
+}
 
 #player-container {
     margin-top: 12px;
@@ -88,14 +93,12 @@ button:hover { background: #111; }
 <body>
 
 <div id="cmd">
-
     <div id="titlebar">
         C:\Windows\System32\cmd.exe — Papa Louie Gameria Library
     </div>
 
     <div id="content">
 
-        <!-- Dynamic system output -->
         <div class="prompt" id="windowsLine"></div>
         <div class="prompt" id="copyrightLine"></div>
         <br>
@@ -107,6 +110,13 @@ button:hover { background: #111; }
                 <option>Loading...</option>
             </select>
             <button id="loadBtn">RUN</button>
+            <button id="downloadBtn">DOWNLOAD</button>
+        </div>
+
+        <div class="prompt">
+            <span>C:\PapaLouie></span> import_swf
+            <input type="file" id="swfFile" accept=".swf">
+            <button id="importBtn">LOAD</button>
         </div>
 
         <div id="player-container"></div>
@@ -122,7 +132,7 @@ button:hover { background: #111; }
 </div>
 
 <script>
-/* ================= REAL SYSTEM INFO ================= */
+/* ================= SYSTEM INFO ================= */
 
 function getSystemInfo() {
     const ua = navigator.userAgent;
@@ -131,35 +141,50 @@ function getSystemInfo() {
 
     let os = "Unknown OS";
     let version = "";
-    let arch = platform.includes("64") ? "x64" : "x86";
+    let arch = /64/.test(platform) ? "x64" : "x86";
 
-    // ---- OS Detection ----
-    if (/Windows NT/.test(ua)) {
-        if (/Windows NT 10.0/.test(ua)) {
-            os = screen.width >= 1920 ? "Windows 11" : "Windows 10";
-            version = "10.0";
-        } else {
-            os = "Windows";
-        }
+    if (/Android/.test(ua)) {
+        os = "Android";
+        version = ua.match(/Android\s([\d.]+)/)?.[1] || "";
+    } else if (/CrOS/.test(ua)) {
+        os = "ChromeOS";
+    } else if (/iPhone|iPad|iPod/.test(ua)) {
+        os = "iOS";
+        version = ua.match(/OS (\d+_\d+)/)?.[1]?.replace("_", ".") || "";
+        arch = "ARM";
+    } else if (/Windows NT/.test(ua)) {
+        os = screen.width >= 1920 ? "Windows 11" : "Windows 10";
+        version = "10.0";
     } else if (/Mac OS X/.test(ua)) {
         os = "macOS";
+        version = ua.match(/Mac OS X (\d+[_\d]+)/)?.[1]?.replace(/_/g, ".") || "";
+        arch = "ARM/x64";
     } else if (/Linux/.test(ua)) {
         os = "Linux";
     }
 
-    // ---- Browser Detection ----
     let browser = "Unknown Browser";
     let browserVersion = "";
 
-    if (ua.includes("Edg")) {
+    if (/Edg/.test(ua)) {
         browser = "Edge";
         browserVersion = ua.match(/Edg\/([\d.]+)/)?.[1];
-    } else if (ua.includes("Chrome")) {
+    } else if (navigator.brave) {
+        browser = "Brave";
+    } else if (/OPR/.test(ua)) {
+        browser = "Opera";
+        browserVersion = ua.match(/OPR\/([\d.]+)/)?.[1];
+    } else if (/SamsungBrowser/.test(ua)) {
+        browser = "Samsung Internet";
+        browserVersion = ua.match(/SamsungBrowser\/([\d.]+)/)?.[1];
+    } else if (/Chrome/.test(ua)) {
         browser = "Chrome";
         browserVersion = ua.match(/Chrome\/([\d.]+)/)?.[1];
-    } else if (ua.includes("Firefox")) {
+    } else if (/Firefox/.test(ua)) {
         browser = "Firefox";
         browserVersion = ua.match(/Firefox\/([\d.]+)/)?.[1];
+    } else if (/Safari/.test(ua)) {
+        browser = "Safari";
     }
 
     document.getElementById("windowsLine").textContent =
@@ -169,21 +194,23 @@ function getSystemInfo() {
         "(c) Microsoft Corporation. All rights reserved.";
 
     document.getElementById("systemInfo").innerHTML =
-        `<span>C:\\PapaLouie></span> Running on ${os} ${arch}<br>
-         <span>C:\\PapaLouie></span> Browser: ${browser} ${browserVersion}<br>
+        `<span>C:\\PapaLouie></span> OS: ${os} ${version} (${arch})<br>
+         <span>C:\\PapaLouie></span> Browser: ${browser} ${browserVersion || ""}<br>
          <span>C:\\PapaLouie></span> Language: ${lang}`;
 }
 
 getSystemInfo();
 
 /* ================= CONFIG ================= */
+
 const GITHUB_USER = "ac245886";
 const GITHUB_REPO = "bladlasdada";
 const apiURL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`;
 
 let rufflePlayer;
 
-/* ================= LOAD SWFS ================= */
+/* ================= LOAD SWF LIST ================= */
+
 async function loadSWFList() {
     const select = document.getElementById("swfSelect");
     select.innerHTML = "<option>Loading...</option>";
@@ -197,7 +224,8 @@ async function loadSWFList() {
         swfFiles.forEach(file => {
             const option = document.createElement("option");
             option.value = file.download_url;
-            option.textContent = file.name.replace(".swf", "");
+            option.textContent = file.name;
+            option.dataset.filename = file.name;
             select.appendChild(option);
         });
     } catch {
@@ -206,10 +234,13 @@ async function loadSWFList() {
 }
 
 /* ================= RUN GAME ================= */
+
 function runGame() {
     const select = document.getElementById("swfSelect");
     const url = select.value;
     const name = select.options[select.selectedIndex].text;
+
+    if (!url) return;
 
     document.title = `C:\\PapaLouie\\${name}`;
 
@@ -222,8 +253,42 @@ function runGame() {
     rufflePlayer.load(url);
 }
 
-document.getElementById("loadBtn").onclick = runGame;
+/* ================= DOWNLOAD SWF ================= */
 
+document.getElementById("downloadBtn").onclick = () => {
+    const select = document.getElementById("swfSelect");
+    const url = select.value;
+    const filename = select.options[select.selectedIndex]?.dataset.filename;
+
+    if (!url) return;
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename || "game.swf";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+};
+
+/* ================= IMPORT LOCAL SWF ================= */
+
+document.getElementById("importBtn").onclick = () => {
+    const file = document.getElementById("swfFile").files[0];
+    if (!file) return;
+
+    document.title = `C:\\PapaLouie\\${file.name}`;
+
+    if (!rufflePlayer) {
+        const ruffle = window.RufflePlayer.newest();
+        rufflePlayer = ruffle.createPlayer();
+        document.getElementById("player-container").appendChild(rufflePlayer);
+    }
+
+    const blobURL = URL.createObjectURL(file);
+    rufflePlayer.load(blobURL);
+};
+
+document.getElementById("loadBtn").onclick = runGame;
 document.addEventListener("keydown", e => {
     if (e.key === "Enter") runGame();
 });
