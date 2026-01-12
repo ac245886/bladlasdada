@@ -2,149 +2,188 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Papa Louie's Gameria Library</title>
+<title>C:\PapaLouie\Gameria</title>
 <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
 <style>
-/* ---------------- BODY ---------------- */
+* { box-sizing: border-box; }
+
 body {
     margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background: #121212;
-    color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: #000;
+    color: #e5e5e5;
+    font-family: Consolas, "Lucida Console", monospace;
     min-height: 100vh;
-}
-
-/* ---------------- HEADER ---------------- */
-h1 {
-    margin-top: 40px;
-    font-size: 2.8em;
-    color: #ffffff;
-    text-align: center;
-    font-weight: 700;
-}
-
-/* ---------------- FLOATING CONTROL PANEL ---------------- */
-#panel {
-    margin-top: 25px;
-    background: rgba(30,30,30,0.9);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    padding: 20px 30px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-    position: relative;
-    z-index: 2;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-#panel:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.7);
-}
-
-select {
-    padding: 12px 16px;
-    border-radius: 8px;
-    border: none;
-    background: #2a2a2a;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 500;
-    outline: none;
-    transition: background 0.2s;
-}
-select:hover {
-    background: #3a3a3a;
-}
-
-button {
-    padding: 12px 25px;
-    border-radius: 8px;
-    border: none;
-    background: #3f51b5;
-    color: #fff;
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-}
-button:hover {
-    background: #5c6bc0;
-    transform: scale(1.05);
-}
-
-/* ---------------- PLAYER CONTAINER ---------------- */
-#player-container {
-    margin-top: 40px;
-    width: 900px;
-    height: 600px;
-    background: #1a1a1a;
-    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-    position: relative;
-    z-index: 1;
 }
 
-/* ---------------- FOOTER ---------------- */
-footer {
-    margin-top: 30px;
-    font-size: 0.85em;
-    color: #aaa;
-    text-align: center;
-    margin-bottom: 20px;
-}
-footer a {
-    color: #3f51b5;
-    text-decoration: none;
-}
-footer a:hover {
-    text-decoration: underline;
+#cmd {
+    width: 980px;
+    background: #000;
+    border: 2px solid #888;
+    box-shadow: 0 0 0 2px #222;
 }
 
-/* ---------------- CENTER FIXED PLAYER ---------------- */
+#titlebar {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-bottom: 2px solid #555;
+}
+
+#content {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.prompt {
+    color: #cfcfcf;
+    margin-bottom: 6px;
+}
+.prompt span { color: #9cdcfe; }
+
+select, button {
+    background: #000;
+    color: #e5e5e5;
+    border: 1px solid #777;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 3px;
+}
+button { padding: 3px 10px; cursor: pointer; }
+button:hover { background: #111; }
+
+#player-container {
+    margin-top: 12px;
+    width: 940px;
+    height: 560px;
+    background: #000;
+    border: 1px solid #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #player-container ruffle-player {
     width: 100%;
     height: 100%;
-    display: block;
+}
+
+#footer {
+    margin-top: 10px;
+    color: #777;
+    font-size: 12px;
+}
+#footer a {
+    color: #9cdcfe;
+    text-decoration: none;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Papa Louie's Gameria Library</h1>
+<div id="cmd">
 
-<div id="panel">
-    <select id="swfSelect"><option>Loading...</option></select>
-    <button id="loadBtn">PLAY</button>
+    <div id="titlebar">
+        C:\Windows\System32\cmd.exe — Papa Louie Gameria Library
+    </div>
+
+    <div id="content">
+
+        <!-- Dynamic system output -->
+        <div class="prompt" id="windowsLine"></div>
+        <div class="prompt" id="copyrightLine"></div>
+        <br>
+        <div class="prompt" id="systemInfo"></div>
+
+        <div class="prompt">
+            <span>C:\PapaLouie></span> select_gameria
+            <select id="swfSelect">
+                <option>Loading...</option>
+            </select>
+            <button id="loadBtn">RUN</button>
+        </div>
+
+        <div id="player-container"></div>
+
+        <div id="footer">
+            Ruffle Emulator | SWFs from
+            <a href="https://archive.org/search?query=creator%3A%22Flipline+Studios%22" target="_blank">
+                Archive.org
+            </a>
+        </div>
+
+    </div>
 </div>
 
-<div id="player-container"></div>
-
-<footer>
-    Powered by Ruffle | All SWFs sourced from <a href="https://archive.org/search?query=creator%3A%22Flipline+Studios%22" target="_blank">Archive.org</a>
-</footer>
-
 <script>
-// ---------------- CONFIG ----------------
+/* ================= REAL SYSTEM INFO ================= */
+
+function getSystemInfo() {
+    const ua = navigator.userAgent;
+    const platform = navigator.platform || "";
+    const lang = navigator.language || "en-US";
+
+    let os = "Unknown OS";
+    let version = "";
+    let arch = platform.includes("64") ? "x64" : "x86";
+
+    // ---- OS Detection ----
+    if (/Windows NT/.test(ua)) {
+        if (/Windows NT 10.0/.test(ua)) {
+            os = screen.width >= 1920 ? "Windows 11" : "Windows 10";
+            version = "10.0";
+        } else {
+            os = "Windows";
+        }
+    } else if (/Mac OS X/.test(ua)) {
+        os = "macOS";
+    } else if (/Linux/.test(ua)) {
+        os = "Linux";
+    }
+
+    // ---- Browser Detection ----
+    let browser = "Unknown Browser";
+    let browserVersion = "";
+
+    if (ua.includes("Edg")) {
+        browser = "Edge";
+        browserVersion = ua.match(/Edg\/([\d.]+)/)?.[1];
+    } else if (ua.includes("Chrome")) {
+        browser = "Chrome";
+        browserVersion = ua.match(/Chrome\/([\d.]+)/)?.[1];
+    } else if (ua.includes("Firefox")) {
+        browser = "Firefox";
+        browserVersion = ua.match(/Firefox\/([\d.]+)/)?.[1];
+    }
+
+    document.getElementById("windowsLine").textContent =
+        `Microsoft ${os} [Version ${version || "Unknown"}]`;
+
+    document.getElementById("copyrightLine").textContent =
+        "(c) Microsoft Corporation. All rights reserved.";
+
+    document.getElementById("systemInfo").innerHTML =
+        `<span>C:\\PapaLouie></span> Running on ${os} ${arch}<br>
+         <span>C:\\PapaLouie></span> Browser: ${browser} ${browserVersion}<br>
+         <span>C:\\PapaLouie></span> Language: ${lang}`;
+}
+
+getSystemInfo();
+
+/* ================= CONFIG ================= */
 const GITHUB_USER = "ac245886";
 const GITHUB_REPO = "bladlasdada";
 const apiURL = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`;
 
 let rufflePlayer;
 
-// ---------------- LOAD SWF LIST ----------------
+/* ================= LOAD SWFS ================= */
 async function loadSWFList() {
     const select = document.getElementById("swfSelect");
     select.innerHTML = "<option>Loading...</option>";
@@ -154,11 +193,6 @@ async function loadSWFList() {
         const files = await response.json();
         const swfFiles = files.filter(f => f.name.toLowerCase().endsWith(".swf"));
 
-        if (swfFiles.length === 0) {
-            select.innerHTML = "<option>No SWFs found</option>";
-            return;
-        }
-
         select.innerHTML = "";
         swfFiles.forEach(file => {
             const option = document.createElement("option");
@@ -167,17 +201,17 @@ async function loadSWFList() {
             select.appendChild(option);
         });
     } catch {
-        select.innerHTML = "<option>Failed to load SWFs</option>";
+        select.innerHTML = "<option>Failed to load</option>";
     }
 }
 
-// ---------------- LOAD SWF INTO RUFFLE ----------------
-document.getElementById("loadBtn").onclick = () => {
+/* ================= RUN GAME ================= */
+function runGame() {
     const select = document.getElementById("swfSelect");
     const url = select.value;
     const name = select.options[select.selectedIndex].text;
 
-    document.title = name;
+    document.title = `C:\\PapaLouie\\${name}`;
 
     if (!rufflePlayer) {
         const ruffle = window.RufflePlayer.newest();
@@ -186,7 +220,13 @@ document.getElementById("loadBtn").onclick = () => {
     }
 
     rufflePlayer.load(url);
-};
+}
+
+document.getElementById("loadBtn").onclick = runGame;
+
+document.addEventListener("keydown", e => {
+    if (e.key === "Enter") runGame();
+});
 
 loadSWFList();
 </script>
