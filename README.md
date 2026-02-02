@@ -1,71 +1,62 @@
-# Papa Louie's Gameria Library (Ruffle Web Loader)
+# 🍕 Papa Louie's Gameria Library
+### A Modern Ruffle-Powered Flash Web Loader
 
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Ruffle](https://img.shields.io/badge/Powered%20by-Ruffle-blue)](https://ruffle.rs/)
+[![Flash Preservation](https://img.shields.io/badge/Flash-Preservation-orange)](https://archive.org/)
 
-A simple **HTML/JS loader** for Flash SWF games using [Ruffle](https://ruffle.rs/).  
-This repository lets you play classic Flash games directly in modern browsers.
+This repository provides a lightweight **HTML/JavaScript loader** designed to run classic Flash-based "Gameria" titles in modern browsers using the [Ruffle](https://ruffle.rs/) emulator. 
 
-> The SWF files referenced here are sourced from [Archive.org](https://archive.org/) for historical and preservation purposes.
-
----
-
-## 🌐 Access the Web Loader
-
-Play the games online using this link:  
-[**Papa Louie's Gameria Loader**](https://ac245886.github.io/bladlasdada/gaems.html)
-
-You can also download the `gaems.html` file to run the loader offline, but an internet connection is still required to load the SWF files; otherwise, the page will not function.
+> **Note:** This project serves as a bridge between historical SWF files hosted on [Archive.org](https://archive.org/) and modern web standards.
 
 ---
 
-## 🎮 Why This Project Exists
+## 🌐 Quick Start
 
-Modern browsers no longer support Flash, making it increasingly difficult to play classic SWF games.  
+You can jump straight into the kitchen or run the loader locally:
 
-This **all-in-one Gameria loader** was created to:
-
-- Provide a **simple, ad-free HTML solution** for playing games
-- Preserve historically significant Flash content
-- Make it easier to test and use [Ruffle](https://ruffle.rs/) with old SWFs
-
-In short, this project offers a **safer, easier, and centralized way** to enjoy these classic games.
+* **Play Online:** [**Launch Papa Louie's Gameria Loader**](https://ac245886.github.io/bladlasdada/gaems.html)
+* **Run Locally:** Download the `gaems.html` file. 
+    * *Requirement: An active internet connection is needed to fetch the Ruffle engine and the SWF assets.*
 
 ---
 
-## ⚠️ Disclaimer
+## 🎮 Why This Project?
 
-- I **do not own** the original SWF games or any related trademarks.  
-- All copyrights, trademarks, and intellectual property remain with their respective owners.  
-- SWF files are **sourced from publicly accessible Archive.org archives**, e.g.:  
-  [`https://archive.org/search?query=creator%3A"Flipline+Studios"`](https://archive.org/search?query=creator%3A%22Flipline+Studios%22)
+Since the end-of-life for Adobe Flash Player, a massive era of gaming history became inaccessible. This project aims to fix that by providing:
 
-### Purpose of This Repository
-
-- Software preservation  
-- Educational purposes  
-- Ruffle compatibility testing  
-- Easier access to historically important Flash content
-
-> If any rightful owner requests removal of their SWF file, it will be promptly removed.
+* **Zero Ads:** A clean, distraction-free environment focused solely on gameplay.
+* **Modern Compatibility:** No plugins or legacy browsers required—if your browser is up-to-date, it works.
+* **Preservation:** Utilizing Ruffle to ensure these games remain playable for educational and nostalgic purposes.
 
 ---
 
-## 📜 Licensing Notes
+## 🛠️ How It Works
 
-- **SWF files**: I am not claiming ownership. Their original licenses may not permit redistribution.  
-- **HTML/JS loader code**: Created by me and may be used freely.
 
----
 
-## 🙏 Respect the Developers
-
-These games are the work of their original creators. Please **support the developers** whenever possible.
+1.  **The Engine:** The loader injects the **Ruffle JavaScript API** into the page.
+2.  **The Source:** It fetches high-quality, verified SWF files directly from the **Internet Archive (Archive.org)**.
+3.  **The Experience:** Ruffle emulates the ActionScript environment on the fly, allowing the games to run natively in your browser's `<canvas>` element.
 
 ---
 
-## 💡 Resources
+## ⚠️ Legal & Disclaimers
 
-- [Ruffle Flash Emulator](https://ruffle.rs/)  
-- [Archive.org](https://archive.org/)  
-- [Flipline Studios](https://www.flipline.com/)
+This repository does not host or claim ownership of any game assets.
+
+* **Intellectual Property:** All characters, titles, and game logic are trademarks of their respective owners (e.g., **Flipline Studios**). 
+* **Sourcing:** SWF files are pulled from public preservation archives.
+* **Removal:** If you are a copyright holder and wish for your content to no longer be accessible through this loader, please open an issue and the reference will be removed immediately.
+
+### Licensing
+* **The Code:** The HTML/JS wrapper logic is licensed under the **MIT License**.
+* **The Games:** Original game licenses apply; this project is for non-commercial preservation and testing.
+
+---
+
+## 🙏 Credits & Resources
+
+* **Developers:** Please support [Flipline Studios](https://www.flipline.com/) for creating these legendary titles.
+* **Emulation:** The [Ruffle Team](https://ruffle.rs/) for their incredible work on Flash preservation.
+* **Hosting:** [Archive.org](https://archive.org/) for maintaining the digital history of the web.
